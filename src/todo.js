@@ -1,5 +1,5 @@
 import PubSub from 'pubsub-js';
-import eventTypes from './eventTypes.js'
+import eventTypes from './eventTypes.js';
 
 const Todo = (title, description, priority, dueDate, id) => {
   const update = data => {
