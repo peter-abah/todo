@@ -11,7 +11,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Todo',
     }),
-  ]
+  ],
   module: {
     rules: [
       {
