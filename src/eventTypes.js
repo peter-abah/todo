@@ -7,9 +7,15 @@ const eventTypes = {
   DELETE_TODO: Symbol('delete_todo'),
   UPDATE_TODO: Symbol('update_todo'),
 
-  NEW_COLLECTION: Symbol('new_collection'),
-  COLLECTION_CREATED: Symbol('collection_created'),
   SHOW_TODOS: Symbol('show_todos'),
+
+  NEW_COLLECTION: Symbol('new_collection'),
+  DELETE_COLLECTION: Symbol('delete_collection'),
+  UPDATE_COLLECTION: Symbol('update_collection'),
+
+  COLLECTION_CREATED: Symbol('collection_created'),
+  COLLECTION_UPDATED: Symbol('collection_updated'),
+  COLLECTION_DELETED: Symbol('collection_deleted'),
 };
 
 export default eventTypes;

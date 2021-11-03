@@ -1,6 +1,6 @@
 import PubSub from 'pubsub-js';
 import eventTypes from './eventTypes.js';
-import Todo from './todo.js'
+import Todo from './todo.js';
 
 const TodoCollection = (name, id) => {
   const newTodo = data => {
