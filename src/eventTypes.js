@@ -1,5 +1,10 @@
 const eventTypes = {
-  NEW_TODO: 'new_todo',
+  TODO_CREATED: Symbol('todo_created'),
+  TODO_DELETED: Symbol('todo_deleted'),
+  TODO_UPDATED: Symbol('todo_updated'),
+  NEW_TODO: Symbol('new_todo'),
+  DELETE_TODO: Symbol('delete_todo'),
+  UPDATE_TODO: Symbol('update_todo'),
 };
 
 export default eventTypes;
