@@ -3,14 +3,18 @@ import eventTypes from './eventTypes.js';
 import Todo from './todo.js'
 
 const TodoCollection = (name) => {
-  const newTodo = ({title, description, priority, dueDate}) {
+  const newTodo = data {
+    const {title, description, priority, dueDate} = data.info;
+
     let todo = Todo(title, description, priority, dueDate);
 
     todos[++todoUid] = todo;
     PubSub.publish(eventTypes.TODO_CREATED, {todo, id: todoUid});
   };
 
-  const deleteTodo = (id) => {
+  const deleteTodo = data => {
+    const id = data.id;
+
     let todo = todos[id];
     delete todos[id];
 
@@ -19,6 +23,9 @@ const TodoCollection = (name) => {
 
   const todos = {};
   let todoUid = -1;
+
+  PubSub.subscribe(eventTypes.NEW_TODO, newTodo);
+  PubSub.subscribe(eventTypes.DELETE_TODO, deleteTodo);
 
   const self = {todos};
   return self;
