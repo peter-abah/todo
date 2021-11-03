@@ -1,5 +1,6 @@
 import PubSub from 'pubsub-js';
 import eventTypes from './eventTypes.js';
+import helpers from './helpers.js';
 
 const DomManager = (() => {
   const addEventListenerToDom = () => {
@@ -25,7 +26,7 @@ const DomManager = (() => {
 
   const showTodos = todos => {
     const todosElem = createTodoElem(todos);
-    helper.clearElement(content);
+    helpers.clearElement(content);
     content.appendChild(todosElem)
   };
 
