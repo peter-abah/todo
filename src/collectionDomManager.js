@@ -28,12 +28,12 @@ const collectionDomManager = (() => {
     PubSub.publish(eventTypes.NEW_COLLECTION, {name: collectionName});
   };
 
-  const addCollection = ({name}) => {
+  const addCollection = ({collection}) => {
     const btn = document.createElement('button');
     btn.classList.add('collection__btn');
 
-    btn.textContent = name;
-    btn.setAttribute('data-collection', name);
+    btn.textContent = collection.name;
+    btn.setAttribute('data-collection', collection.name);
 
     btn.addEventListener('click', showCollection);
     collectionBtnsContainer.appendChild(btn);
@@ -45,7 +45,7 @@ const collectionDomManager = (() => {
   const collectionForm = document.querySelector('.collection__form');
   const collectionInput = document.getElementById('collection-name');
 
-  PubSub.subscribe(eventTypes.NEW_COLLECTION, addCollection);
+  PubSub.subscribe(eventTypes.COLLECTION_CREATED, addCollection);
 
   addEventListeners();
 })();

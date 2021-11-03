@@ -8,6 +8,7 @@ const eventTypes = {
   UPDATE_TODO: Symbol('update_todo'),
 
   NEW_COLLECTION: Symbol('new_collection'),
+  COLLECTION_CREATED: Symbol('collection_created'),
   SHOW_TODOS: Symbol('show_todos'),
 };
 
