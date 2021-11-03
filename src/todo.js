@@ -6,7 +6,7 @@ const Todo = (title, description, priority, dueDate, id) => {
     if (id !== data.id) return;
 
     for (let k of Object.keys(data.info)) {
-      if (k === 'id' && !self.hasOwnProperty(k)) next;
+      if (k === 'id' || !self.hasOwnProperty(k)) next;
       
       self[k] = data.info[k];
     }
