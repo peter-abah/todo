@@ -1,4 +1,5 @@
-
+import PubSub from 'pubsub-js';
+import eventTypes from './eventTypes.js';
 
 const categoryDomManager = (() => {
   const addEventListeners = () => {
@@ -9,19 +10,11 @@ const categoryDomManager = (() => {
 
   const showCategory = event => {
     const category = event.target.getAttribute('data-category');
-    let todos = categoryFuncs[category]();
-
-    showTodos(todos);
-  };
-
-  const categoryFuncs = {
-    all: allTodos,
-    today: todayTodos,
-    tommorow: tommorowTodos,
-    next7days: nextNDays(7);
+    
+    PubSub.publish(eventTypes.SHOW_TODOS, {category});
   };
 
   const categoryBtns = [...document.querySelectorAll('.categories__btn')];
 })();
 
-export default categoryDomManager
+export default categoryDomManager;
