@@ -1,6 +1,8 @@
 import PubSub from 'pubsub-js';
 import eventTypes from '../eventTypes.js';
 
+import todoTemplate from './templates/todo-template.hbs';
+
 const TodoElem = (todo) => {
   const newTodo = todo => {
     const todoHtml = todoTemplate(todo);
@@ -17,6 +19,7 @@ const TodoElem = (todo) => {
     res.checkBox = self.querySelector('.todo__checkBox');
     res.title = self.querySelector('.todo__title');
     res.deleteBtn = self.querySelector('.todo__btn-delete');
+    res.date = self.querySelector('.todo__date');
 
     res.titleInput = self.querySelector('.todo__input-title');
     res.descriptionInput = self.querySelector('.todo__input-description');
