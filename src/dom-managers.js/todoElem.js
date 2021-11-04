@@ -2,6 +2,15 @@ import PubSub from 'pubsub-js';
 import eventTypes from '../eventTypes.js';
 
 const TodoElem = (todo) => {
+  const newTodo = todo => {
+    const todoHtml = todoTemplate(todo);
+
+    let elem = document.createElement('div');
+    elem.innerHtml = todoHtml;
+
+    return elem.firstChild();
+  };
+
   const cacheDom = () => {
     res = {}
 
@@ -77,7 +86,7 @@ const TodoElem = (todo) => {
     });
   };
 
-  const self = todoTemplate(todo);
+  const self = newTodo(todo);
   const dom = cacheDom();
   addEventListeners();
 
