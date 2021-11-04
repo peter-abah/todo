@@ -18,7 +18,7 @@ const todos = (() => {
 
     const todosElem = createTodos(collection);
     helpers.clearElement(content);
-    Dom.content.appendChild(todosElem);
+    dom.content.appendChild(todosElem);
   };
 
   const createTodos = collection => {
@@ -27,7 +27,7 @@ const todos = (() => {
     let completedTodoElems = getTodoElems(collection, todo => todo.completed === true);
 
     let header = headerTemplate(collection);
-    header.appendChild(Dom.addTodoBtn);
+    header.appendChild(dom.addTodoBtn);
 
     let wrapper = document.createElement('section');
 
@@ -45,7 +45,8 @@ const todos = (() => {
 
     collection.todos.forEach(todo =>  {
       if (predicate(todo)) {
-        let elem = TodoElem(todo);
+        let elem = dom[todo.id] || TodoElem(todo);
+        dom[todo.id] = elem
         wrapper.appendChild(elem);
       }
     });
@@ -74,7 +75,7 @@ const todos = (() => {
       isTommorow(value.dueDate));
 
     return {name: 'Tommorow', todos}
-  }
+  };
 
   const next7Days = () => {
     const date = addWeeks(new Date(), 1)
@@ -82,6 +83,19 @@ const todos = (() => {
       isBefore(value.dueDate, date));
 
     return {name: 'Next 7 Days', todos};
+  };
+
+  const updateTodo = ({id , changed}) => {
+    if (!changed.includes('completed')) return;
+
+    const todoElem = dom[id];
+    todoElem.classList.toggle('todo--completed');
+  };
+
+  const deleteTodo = ({id}) => {
+    const todoElem = dom[id];
+    todoElem.remove();
+    delete dom[id];
   }
 
   const collections = TodoCollections;
@@ -92,7 +106,12 @@ const todos = (() => {
     next7Days: next7Days,
   }
 
+  const dom = {};
+
   PubSub.subscribe(eventTypes.SHOW_TODOS, showTodos);
+  PubSub.subscribe(eventTypes.TODO_CREATED, showTodos);
+  PubSub.subscribe(eventTypes.TODO_UPDATED, updateTodo);
+  PubSub.subscribe(eventTypes.TODO_DELETED, deleteTodo);
 })();
 
 export default todos;
