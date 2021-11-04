@@ -5,6 +5,7 @@ import eventTypes from '../eventTypes.js';
 import helpers from '../helpers.js';
 
 import TodoCollections from '../todoCollections.js';
+import TodoElem from './todoElem.js';
 
 const todos = (() => {
   const addEventListeners = () => {
@@ -43,7 +44,7 @@ const todos = (() => {
   };
 
   const createTodos = collection => {
-    let todoElems = getTodoElems(collection, todo => todo.completed);
+    let todoElems = getTodoElems(collection, todo => !todo.completed);
 
     let completedTodoElems = getTodoElems(collection, todo => todo.completed);
 
@@ -54,7 +55,6 @@ const todos = (() => {
     //wrapper.appendChild(header);
     wrapper.appendChild(completedTodoElems);
     wrapper.appendChild(todoElems);
-
     return wrapper;
   };
 
@@ -62,7 +62,7 @@ const todos = (() => {
     if(!predicate) predicate = () => true;
     let wrapper = document.createElement('div');
 
-    Object.keys(collection.todos).forEach(todo =>  {
+    Object.entries(collection.todos).forEach(todo =>  {
       if (predicate(todo)) {
         let elem = dom[todo.id] || TodoElem(todo);
         dom[todo.id] = elem
