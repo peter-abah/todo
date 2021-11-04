@@ -3,6 +3,7 @@ import {isToday, isTommorow, addWeeks, isBefore} from 'date-fns';
 
 import eventTypes from './eventTypes.js';
 import helpers from './helpers.js';
+
 import TodoCollections from './todoCollections.js';
 
 const TodoDomManager = (() => {
@@ -17,12 +18,11 @@ const TodoDomManager = (() => {
 
     const todosElem = createTodos(collection);
     helpers.clearElement(content);
-    content.appendChild(todosElem);
+    Dom.content.appendChild(todosElem);
   };
 
   const createTodos = collection => {
-    let todoElems = getTodoElems(collection);
-
+    let todoElems = getTodoElems(collection, todo => todo.completed === false);
 
     let completedTodoElems = getTodoElems(collection, todo => todo.completed === true);
 
@@ -38,13 +38,13 @@ const TodoDomManager = (() => {
     return todosWrapper;
   };
 
-  const getTodoElems = (collection, exclusion) => {
-    if(!exclusion) exclusion = todo => todo.completed === false;
+  const getTodoElems = (collection, predicate) => {
+    if(!predicate) predicate = () => true;
 
     let wrapper = document.createElement('div');
 
     collection.todos.forEach(todo =>  {
-      if (exclusion(todo)) {
+      if (predicate(todo)) {
         let elem = TodoElem(todo);
         wrapper.appendChild(elem);
       }

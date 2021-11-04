@@ -22,7 +22,7 @@ const TodoCollections = (() => {
   PubSub.subscribe(eventTypes.NEW_COLLECTION, createCollection);
   PubSub.subscribe(eventTypes.DELETE_COLLECTION, deleteCollection);
 
-  const self = {};
+  const self = collections;
   return self;
 })();
 
