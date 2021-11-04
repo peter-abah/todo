@@ -29,9 +29,9 @@
     <div class="todo__form__field">
       <label for="{{`${id}-input-priority`}}">Priority</label>
       <select class="todo__input-date" id="{{`${id}-input-priority`}}">
-        <option {{#if_eq priority "low"}}selected{{/if_eq}} value="low">Low</option>
-        <option {{#if_eq priority "medium"}}selected{{/if_eq}} value="medium">Medium</option>
-        <option {{#if_eq priority "high"}}selected{{/if_eq}} value="high">High</option>
+        <option {{#[helpers/if_eq] priority "low"}}selected{{/if_eq}} value="low">Low</option>
+        <option {{#[helpers/if_eq] priority "medium"}}selected{{/if_eq}} value="medium">Medium</option>
+        <option {{#[helpers/if_eq] priority "high"}}selected{{/if_eq}} value="high">High</option>
       </select>
     </div>
   </form>
