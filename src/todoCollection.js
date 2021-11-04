@@ -7,10 +7,11 @@ const TodoCollection = (name, id) => {
     const {title, description, priority, dueDate} = data.info;
 
     uid++;
-    let todo = Todo(title, description, priority, dueDate, uid);
+    todoId = `${id} ${uid}`
+    let todo = Todo(title, description, priority, dueDate, todoId);
 
-    todos[uid] = todo;
-    PubSub.publish(eventTypes.TODO_CREATED, {todo, id: uid});
+    todos[todoId] = todo;
+    PubSub.publish(eventTypes.TODO_CREATED, {todo, id: todoId});
   };
 
   const deleteTodo = ({id}) => {
