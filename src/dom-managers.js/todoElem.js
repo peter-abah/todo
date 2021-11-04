@@ -38,7 +38,7 @@ const TodoElem = (todo) => {
   };
 
   const toggleForm = event => {
-    dom.form.classList.toggle('todo__form--hidden')
+    dom.form.classList.toggle('todo__form--hidden');
   };
 
   const deleteTodo = event => {
@@ -52,12 +52,33 @@ const TodoElem = (todo) => {
     let value = event.target.value;
 
     PubSub.publish(eventTypes.UPDATE_TODO, {id: todo.id, info: {key: value}});
-  }
+  };
+
+  const updateUI = ({id, changed}) => {
+    if (id !== todo.id) return;
+
+    switch (changed) {
+      case 'title':
+        dom.title.textContent = todo[changed];
+        dom.titleInput.value = todo[changed];
+        break;
+      case 'description':
+        dom.descriptionInput.value = todo[changed];
+        break;
+      case 'priority':
+        dom.priorityInput.value = todo[changed];
+        break;
+      case 'dueDate':
+        dom.dateInput.value = todo[changed];
+        dom.date = helpers.formatDate(todo[changed]);
+        break;
+    }
+  };
 
   const self = todoTemplate(todo);
-
   const dom = cacheDom();
-
   addEventListeners();
+
+  PubSub.subscribe(eventTypes.TODO_UPDATED, updateUI);
   return self;
 };
