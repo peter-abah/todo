@@ -17,7 +17,6 @@ const TodoCollection = (name, id) => {
 
   const deleteTodo = (msg, {id}) => {
     delete todos[id];
-
     PubSub.publish(eventTypes.TODO_DELETED, {id});
   };
 

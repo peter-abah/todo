@@ -7,14 +7,13 @@ const TodoElem = (todo) => {
   const newTodo = todo => {
     const todoHtml = todoTemplate(todo);
 
-    let elem = document.createElement('div');
-    elem.innerHtml = todoHtml;
-
-    return elem.firstChild();
+    const elem = document.createElement('div');
+    elem.innerHTML = todoHtml;
+    return elem.firstChild;
   };
 
   const cacheDom = () => {
-    res = {}
+    const res = {}
 
     res.checkBox = self.querySelector('.todo__checkBox');
     res.title = self.querySelector('.todo__title');
@@ -96,3 +95,5 @@ const TodoElem = (todo) => {
   PubSub.subscribe(eventTypes.TODO_UPDATED, updateUI);
   return self;
 };
+
+export default TodoElem;

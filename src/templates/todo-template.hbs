@@ -3,17 +3,17 @@
     <button class="todo__checkBox">complete</button>
     <div class="todo__header">
       <h4 class="todo__title">{{title}}</h4>
-      <p class="todo__date">{{date}}</p>
+      <p class="todo__date">{{formatDate date}}</p>
     </div>
-    <button class="todo__btn-delete">
+    <button class="todo__btn-delete" data-todo-id="{{id}}">
       delete
     </button>
   </div>
-
+  
   <form class="todo__form">
     <div class="todo__form__field">
       <label for="{{id}}-input-title">Title</label>
-      <input type="text" id="{{id}}-input-title" class="todo__input-title" required>
+      <input type="text" id="{{id}}-input-title" class="todo__input-title" value="{{title}}" required>
     </div>
 
     <div class="todo__form__field">
@@ -23,12 +23,12 @@
 
     <div class="todo__form__field">
       <label for="{{id}}-input-date">Date</label>
-      <input class="todo__date-input" id="{{id}}-input-date" type="date">
+      <input class="todo__input-date" id="{{id}}-input-date" type="date" value="{{formatDate dueDate}}">
     </div>
 
     <div class="todo__form__field">
       <label for="{{id}}-input-priority">Priority</label>
-      <select class="todo__input-date" id="{{id}}-input-priority">
+      <select class="todo__input-priority" id="{{id}}-input-priority">
         <option {{#if_eq priority "low"}}selected{{/if_eq}} value="low">Low</option>
         <option {{#if_eq priority "medium"}}selected{{/if_eq}} value="medium">Medium</option>
         <option {{#if_eq priority "high"}}selected{{/if_eq}} value="high">High</option>

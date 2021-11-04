@@ -27,6 +27,8 @@ const todos = (() => {
 
     PubSub.publish(eventTypes.NEW_TODO, 
       {id: 0, info: {title, description, priority, dueDate}});
+
+    dom.form.reset();
   };
 
   const showTodos = (msg, data) => {
@@ -62,7 +64,7 @@ const todos = (() => {
     if(!predicate) predicate = () => true;
     let wrapper = document.createElement('div');
 
-    Object.entries(collection.todos).forEach(todo =>  {
+    Object.values(collection.todos).forEach(todo =>  {
       if (predicate(todo)) {
         let elem = dom[todo.id] || TodoElem(todo);
         dom[todo.id] = elem
@@ -132,7 +134,7 @@ const todos = (() => {
     titleInput: document.querySelector('.todo__new-form__input-title'),
     descriptionInput: document.querySelector('.todo__new-form__input-description'),
     dateInput: document.querySelector('.todo__new-form__input-date'),
-    priorityInput: document.querySelector('.todo__new-form__input-title'),
+    priorityInput: document.querySelector('.todo__new-form__input-priority'),
   };
   addEventListeners();
 

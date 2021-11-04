@@ -1,3 +1,6 @@
+import {parse} from 'date-fns';
+
+// clears all child nodes in an element
 const clearElement = element => {
   while (element.lastChild) {
     element.lastChild.remove();
@@ -14,4 +17,10 @@ const filterObject = (obj, predicate) => {
   }, {});
 };
 
-export default {clearElement, filterObject};
+// converts a date string in yyyy-MM-dd format to a date object
+// returns undefined if date is undefined
+const convertDate = (dateStr) => {
+  return dateStr ? parse(dateStr, 'yyyy-MM-dd', new Date()) : dateStr;
+}
+
+export default {clearElement, filterObject, convertDate};
