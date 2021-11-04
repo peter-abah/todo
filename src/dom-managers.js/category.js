@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js';
-import eventTypes from './eventTypes.js';
+import eventTypes from '../eventTypes.js';
 
-const categoryDomManager = (() => {
+const category = (() => {
   const addEventListeners = () => {
     categoryBtns.forEach(btn => 
       btn.addEventListener('click', showCategory)
@@ -17,4 +17,4 @@ const categoryDomManager = (() => {
   const categoryBtns = [...document.querySelectorAll('.categories__btn')];
 })();
 
-export default categoryDomManager;
+export default category;

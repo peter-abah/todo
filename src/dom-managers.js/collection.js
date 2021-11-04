@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js';
-import eventTypes from './eventTypes.js';
+import eventTypes from '../eventTypes.js';
 
-const collectionDomManager = (() => {
+const collection = (() => {
   const addEventListeners = () => {
     collectionBtns.forEach(btn => 
       btn.addEventListener('click', showCollection)
@@ -50,4 +50,4 @@ const collectionDomManager = (() => {
   addEventListeners();
 })();
 
-export default collectionDomManager;
+export default collection;

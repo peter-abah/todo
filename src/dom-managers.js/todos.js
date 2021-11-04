@@ -1,12 +1,12 @@
 import PubSub from 'pubsub-js';
 import {isToday, isTommorow, addWeeks, isBefore} from 'date-fns';
 
-import eventTypes from './eventTypes.js';
-import helpers from './helpers.js';
+import eventTypes from '../eventTypes.js';
+import helpers from '../helpers.js';
 
-import TodoCollections from './todoCollections.js';
+import TodoCollections from '../todoCollections.js';
 
-const TodoDomManager = (() => {
+const todos = (() => {
   const showTodos = data => {
     let collection;
 
@@ -94,3 +94,5 @@ const TodoDomManager = (() => {
 
   PubSub.subscribe(eventTypes.SHOW_TODOS, showTodos);
 })();
+
+export default todos;
