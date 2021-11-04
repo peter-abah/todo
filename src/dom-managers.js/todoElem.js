@@ -57,22 +57,24 @@ const TodoElem = (todo) => {
   const updateUI = ({id, changed}) => {
     if (id !== todo.id) return;
 
-    switch (changed) {
-      case 'title':
-        dom.title.textContent = todo[changed];
-        dom.titleInput.value = todo[changed];
-        break;
-      case 'description':
-        dom.descriptionInput.value = todo[changed];
-        break;
-      case 'priority':
-        dom.priorityInput.value = todo[changed];
-        break;
-      case 'dueDate':
-        dom.dateInput.value = todo[changed];
-        dom.date = helpers.formatDate(todo[changed]);
-        break;
-    }
+    changed.forEach(key => {
+      switch (key) {
+        case 'title':
+          dom.title.textContent = todo[key];
+          dom.titleInput.value = todo[key];
+          break;
+        case 'description':
+          dom.descriptionInput.value = todo[key];
+          break;
+        case 'priority':
+          dom.priorityInput.value = todo[key];
+          break;
+        case 'dueDate':
+          dom.dateInput.value = todo[key]; // might have a bug
+          dom.date = helpers.formatDate(todo[key]);
+          break;
+      }
+    });
   };
 
   const self = todoTemplate(todo);
