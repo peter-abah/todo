@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js';
 import eventTypes from '../eventTypes.js';
 
-import todoTemplate from './templates/todo-template.hbs';
+import todoTemplate from '../templates/todo-template.hbs';
 
 const TodoElem = (todo) => {
   const newTodo = todo => {
