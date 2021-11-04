@@ -13,8 +13,8 @@ const collectionDomManager = (() => {
   };
 
   const showCollection = event => {
-    const collectionName = event.target.getAttribute('data-collection');
-    PubSub.publish(eventTypes.SHOW_TODOS, {collectionName});
+    const collectionId = event.target.getAttribute('data-collection');
+    PubSub.publish(eventTypes.SHOW_TODOS, {collectionId});
   };
 
   const showCollectionForm = event => {
@@ -33,7 +33,7 @@ const collectionDomManager = (() => {
     btn.classList.add('collection__btn');
 
     btn.textContent = collection.name;
-    btn.setAttribute('data-collection', collection.name);
+    btn.setAttribute('data-collection', collection.id);
 
     btn.addEventListener('click', showCollection);
     collectionBtnsContainer.appendChild(btn);
