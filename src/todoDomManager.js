@@ -1,5 +1,6 @@
 import PubSub from 'pubsub-js';
-import {isToday, isTommorow} from 'date-fns';
+import {isToday, isTommorow, addWeeks, isBefore} from 'date-fns';
+
 import eventTypes from './eventTypes.js';
 import helpers from './helpers.js';
 import TodoCollections from './todoCollections.js';
@@ -17,15 +18,39 @@ const TodoDomManager = (() => {
     const todosElem = createTodos(collection);
     helpers.clearElement(content);
     content.appendChild(todosElem);
-    addEventListeners();
   };
 
-  const createTodos = collection {
-    const template = todosTemplate(collection);
-    
-    const elem = document.createElement('div');
-    elem.innerHtml = template;
-    return elem;
+  const createTodos = collection => {
+    let todoElems = getTodoElems(collection);
+
+
+    let completedTodoElems = getTodoElems(collection, todo => todo.completed === true);
+
+    let header = headerTemplate(collection);
+    header.appendChild(Dom.addTodoBtn);
+
+    let wrapper = document.createElement('section');
+
+    wrapper.appendChild(header);
+    wrapper.appendChild(completedTodoElems);
+    wrapper.appendChild(todosElem);
+
+    return todosWrapper;
+  };
+
+  const getTodoElems = (collection, exclusion) => {
+    if(!exclusion) exclusion = todo => todo.completed === false;
+
+    let wrapper = document.createElement('div');
+
+    collection.todos.forEach(todo =>  {
+      if (exclusion(todo)) {
+        let elem = TodoElem(todo);
+        wrapper.appendChild(elem);
+      }
+    });
+
+    return wrapper;
   };
 
   const allTodos = () => {
