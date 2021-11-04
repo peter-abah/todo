@@ -1,6 +1,6 @@
 const clearElement = element => {
-  while (element.lastChild()) {
-    element.lastChild().remove();
+  while (element.lastChild) {
+    element.lastChild.remove();
   }
 };
 

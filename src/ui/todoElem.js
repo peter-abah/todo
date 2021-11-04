@@ -66,7 +66,7 @@ const TodoElem = (todo) => {
     PubSub.publish(eventTypes.UPDATE_TODO, {id: todo.id, info: {key: value}});
   };
 
-  const updateUI = ({id, changed}) => {
+  const updateUI = (msg, {id, changed}) => {
     if (id !== todo.id) return;
 
     changed.forEach(key => {

@@ -3,14 +3,16 @@ import eventTypes from './eventTypes.js';
 import TodoCollection from './todoCollection.js';
 
 const TodoCollections = (() => {
-  const createCollection = ({name}) => {
-    const collection = TodoCollection(name);
-    collections[++uid] =  collection;
+  const createCollection = (msg, data) => {
+    const id = ++uid;
 
-    PubSub.publish(eventTypes.COLLECTION_CREATED, {id: uid, collection});
+    const collection = TodoCollection(data.name, id);
+    collections[id] =  collection;
+
+    PubSub.publish(eventTypes.COLLECTION_CREATED, {id, collection});
   };
 
-  const deleteCollection = ({id}) => {
+  const deleteCollection = (msg, {id}) => {
     delete collections[id];
 
     PubSub.publish(eventTypes.COLLECTION_DELETED, {id});

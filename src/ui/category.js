@@ -15,6 +15,7 @@ const category = (() => {
   };
 
   const categoryBtns = [...document.querySelectorAll('.categories__btn')];
+  addEventListeners();
 })();
 
 export default category;

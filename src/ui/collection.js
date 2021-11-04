@@ -9,7 +9,7 @@ const collection = (() => {
 
     addCollectionBtn.addEventListener('click', showCollectionForm);
 
-    collectionForm.addEventListener('click', createCollection);
+    collectionForm.addEventListener('submit', createCollection);
   };
 
   const showCollection = event => {
@@ -28,7 +28,7 @@ const collection = (() => {
     PubSub.publish(eventTypes.NEW_COLLECTION, {name: collectionName});
   };
 
-  const addCollection = ({collection}) => {
+  const addCollection = (msg, {collection}) => {
     const btn = document.createElement('button');
     btn.classList.add('collection__btn');
 
@@ -39,11 +39,11 @@ const collection = (() => {
     collectionBtnsContainer.appendChild(btn);
   };
 
-  const collectionBtnsContainer = document.querySelector('.collection');
+  const collectionBtnsContainer = document.querySelector('.collections');
   const collectionBtns = [...document.querySelectorAll('.collection__btn')];
-  const addCollectionBtn = document.querySelector('.collection__btn-add');
-  const collectionForm = document.querySelector('.collection__form');
-  const collectionInput = document.getElementById('collection-name');
+  const addCollectionBtn = document.querySelector('.collections__btn-add');
+  const collectionForm = document.querySelector('.collections__form');
+  const collectionInput = document.querySelector('.collections__form__input');
 
   PubSub.subscribe(eventTypes.COLLECTION_CREATED, addCollection);
 

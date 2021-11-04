@@ -1,1 +1,63 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Todo</title><script defer="defer" src="main.js"></script></head><body><main id="content"></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo</title>
+<script defer src="main.js"></script></head>
+<body>
+  <header>
+    <h1 class="brand">Todo</h1>
+    <div class="buttons">
+      <button class="todo__btn-new"l>Add Todo</button>
+      <button>Toggle Theme</button>
+    </div>
+  </header>
+  <div>
+    <section class="sidebar">
+      <div class="categories">
+        <button class="categories__btn">All</button>
+        <button class="categories__btn">Today</button>
+        <button class="categories__btn">Tomorrow</button>
+        <button class="categories__btn">Next 7 Days</button>
+      </div>
+      <div class="collections">
+        <button class="collections__btn-add">New Collection</button>
+        <form class="collections__form">
+          <input class="collections__form__input" type="text" required>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </section>
+    <main id="content"></main>
+    <form class="todo__new-form">
+      <div class="field">
+        <label for="">Title</label>
+        <input type="text" class="todo__new-form__input-title">
+      </div>
+
+      <div class="field">
+        <label for="">Description</label>
+        <textarea class="todo__new-form__input-description"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="">Due Date</label>
+        <input type="date" name="" class="todo__new-form__input-date">
+      </div>
+
+      <div class="field">
+        <label for="">Priority</label>
+        <select class="todo__new-form__input-priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <footer></footer>
+</body>
+</html>

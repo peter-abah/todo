@@ -2,7 +2,7 @@ import PubSub from 'pubsub-js';
 import eventTypes from './eventTypes.js';
 
 const Todo = (title, description, priority, dueDate, id) => {
-  const update = data => {
+  const update = (msg, data) => {
     if (id !== data.id) return;
 
     for (let k of Object.keys(data.info)) {
