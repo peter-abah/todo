@@ -1,5 +1,5 @@
 import PubSub from 'pubsub-js';
-import {isToday, isTommorow, addWeeks, isBefore} from 'date-fns';
+import {isToday, isTomorrow, addWeeks, isBefore} from 'date-fns';
 
 import eventTypes from '../eventTypes.js';
 import helpers from '../helpers.js';
@@ -17,7 +17,7 @@ const todos = (() => {
     } else return;
 
     const todosElem = createTodos(collection);
-    helpers.clearElement(content);
+    helpers.clearElement(dom.content);
     dom.content.appendChild(todosElem);
   };
 
@@ -72,7 +72,7 @@ const todos = (() => {
 
   const tommorowTodos = () => {
     let todos = helpers.objectFilter(allTodos().todos, value => 
-      isTommorow(value.dueDate));
+      isTomorrow(value.dueDate));
 
     return {name: 'Tommorow', todos}
   };
@@ -106,7 +106,9 @@ const todos = (() => {
     next7Days: next7Days,
   }
 
-  const dom = {};
+  const dom = {
+    content: document.getElementById('content')
+  };
 
   PubSub.subscribe(eventTypes.SHOW_TODOS, showTodos);
   PubSub.subscribe(eventTypes.TODO_CREATED, showTodos);
