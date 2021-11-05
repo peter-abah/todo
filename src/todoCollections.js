@@ -8,7 +8,6 @@ const TodoCollections = (() => {
 
     const collection = TodoCollection(data.name, id);
     collections[id] =  collection;
-
     PubSub.publish(eventTypes.COLLECTION_CREATED, {id, collection});
   };
 

@@ -9,7 +9,7 @@
   <header>
     <h1 class="brand">Todo</h1>
     <div class="buttons">
-      <button class="todo__btn-new"l>Add Todo</button>
+      <button class="todo__btn-new">Add Todo</button>
       <button>Toggle Theme</button>
     </div>
   </header>
@@ -31,6 +31,10 @@
     </section>
     <main id="content"></main>
     <form class="todo__new-form">
+      <div class="field">
+        <label for="">Collection</label>
+        <select id="" class="todo__new-form__input-collection"></select>
+      </div>
       <div class="field">
         <label for="">Title</label>
         <input type="text" class="todo__new-form__input-title" required>

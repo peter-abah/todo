@@ -14,8 +14,22 @@ const todos = (() => {
   };
 
   const toggleForm = event => {
+    populateSelect(dom.collectionSelect, collections)
     dom.form.classList.toggle('todo__new-form--hidden');
   };
+
+  // clears select element and populate with option element 
+  // built using values in collections
+  const populateSelect = (select, collections) => {
+    helpers.clearElement(select);
+
+    Object.values(collections).forEach( ({id, name}) => {
+      let option = new Option(name, id);
+      select.appendChild(option);
+    });
+
+    return select;
+  }
 
   const newTodo = event => {
     event.preventDefault();
@@ -24,9 +38,10 @@ const todos = (() => {
     const description = dom.descriptionInput.value;
     const priority = dom.priorityInput.value;
     const dueDate = dom.dateInput.value;
+    const id = +dom.collectionSelect.value
 
     PubSub.publish(eventTypes.NEW_TODO, 
-      {id: 0, info: {title, description, priority, dueDate}});
+      {id, info: {title, description, priority, dueDate}});
 
     dom.form.reset();
   };
@@ -135,6 +150,7 @@ const todos = (() => {
     descriptionInput: document.querySelector('.todo__new-form__input-description'),
     dateInput: document.querySelector('.todo__new-form__input-date'),
     priorityInput: document.querySelector('.todo__new-form__input-priority'),
+    collectionSelect: document.querySelector('.todo__new-form__input-collection'),
   };
   addEventListeners();
 
@@ -142,8 +158,6 @@ const todos = (() => {
   PubSub.subscribe(eventTypes.TODO_CREATED, showTodos);
   PubSub.subscribe(eventTypes.TODO_UPDATED, updateTodo);
   PubSub.subscribe(eventTypes.TODO_DELETED, deleteTodo);
-
-  PubSub.publish(eventTypes.NEW_COLLECTION, {name: 'Default'});
 })();
 
 export default todos;

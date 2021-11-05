@@ -47,6 +47,8 @@ const collection = (() => {
 
   PubSub.subscribe(eventTypes.COLLECTION_CREATED, addCollection);
 
+  // generate event to create a default collection
+  PubSub.publish(eventTypes.NEW_COLLECTION, {name: 'Default'});
   addEventListeners();
 })();
 
