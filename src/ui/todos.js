@@ -15,7 +15,7 @@ const todos = (() => {
 
   const toggleForm = event => {
     populateSelect(dom.collectionSelect, collections)
-    dom.form.classList.toggle('todo__new-form--hidden');
+    dom.form.classList.toggle('modal__form--hidden');
   };
 
   // clears select element and populate with option element 
@@ -144,13 +144,13 @@ const todos = (() => {
 
   const dom = {
     content: document.getElementById('content'),
-    newTodoBtn: document.querySelector('.todo__btn-new'),
-    form: document.querySelector('.todo__new-form'),
-    titleInput: document.querySelector('.todo__new-form__input-title'),
-    descriptionInput: document.querySelector('.todo__new-form__input-description'),
-    dateInput: document.querySelector('.todo__new-form__input-date'),
-    priorityInput: document.querySelector('.todo__new-form__input-priority'),
-    collectionSelect: document.querySelector('.todo__new-form__input-collection'),
+    newTodoBtn: document.querySelector('.modal__btn-open'),
+    form: document.querySelector('.modal__form'),
+    titleInput: document.querySelector('.modal__form__input-title'),
+    descriptionInput: document.querySelector('.modal__form__input-description'),
+    dateInput: document.querySelector('.modal__form__input-date'),
+    priorityInput: document.querySelector('.modal__form__input-priority'),
+    collectionSelect: document.querySelector('.modal__form__input-collection'),
   };
   addEventListeners();
 

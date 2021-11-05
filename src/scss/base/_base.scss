@@ -10,9 +10,18 @@ body {
 }
 
 .main-wrapper {
+  position: relative;
   flex-grow: 1;
 }
 
 * {
   box-sizing: inherit;
+}
+
+button {
+  display: block;
+  border: none;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }

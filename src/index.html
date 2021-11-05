@@ -7,10 +7,10 @@
 </head>
 
 <body>
-  <header>
+  <header class="header">
     <h1 class="brand">Todo</h1>
     <div class="buttons">
-      <button class="todo__btn-new">Add Todo</button>
+      <button class="modal__btn-open">Add Todo</button>
       <button>Toggle Theme</button>
     </div>
   </header>
@@ -32,39 +32,43 @@
       </div>
     </aside>
     <main id="content"></main>
-    <form class="todo__new-form">
-      <div class="field">
+  </div>
+  <footer></footer>
+
+  <div class="modal modal--hidden">
+    <form class="modal__form">
+      <div class="modal__form__field">
         <label for="">Collection</label>
-        <select id="" class="todo__new-form__input-collection"></select>
+        <select id="" class="modal__form__input-collection"></select>
       </div>
-      <div class="field">
+      
+      <div class="modal__form__field">
         <label for="">Title</label>
-        <input type="text" class="todo__new-form__input-title" required>
+        <input type="text" class="modal__form__input-title" required>
       </div>
 
-      <div class="field">
+      <div class="modal__form__field">
         <label for="">Description</label>
-        <textarea class="todo__new-form__input-description"></textarea>
+        <textarea class="modal__form__input-description"></textarea>
       </div>
 
-      <div class="field">
+      <div class="modal__form__field">
         <label for="">Due Date</label>
-        <input type="date" name="" class="todo__new-form__input-date">
+        <input type="date" name="" class="modal__form__input-date">
       </div>
 
-      <div class="field">
+      <div class="modal__form__field">
         <label for="">Priority</label>
-        <select class="todo__new-form__input-priority">
+        <select class="modal__form__input-priority">
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" class="modal__form__btn">Submit</button>
     </form>
   </div>
-  <footer></footer>
 </body>
 
 </html>
