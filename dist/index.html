@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo</title>
 <script defer src="main.js"></script></head>
+
 <body>
   <header>
     <h1 class="brand">Todo</h1>
@@ -13,8 +14,8 @@
       <button>Toggle Theme</button>
     </div>
   </header>
-  <div>
-    <section class="sidebar">
+  <div class="main-wrapper">
+    <aside class="sidebar">
       <div class="categories">
         <button class="categories__btn">All</button>
         <button class="categories__btn">Today</button>
@@ -22,13 +23,14 @@
         <button class="categories__btn">Next 7 Days</button>
       </div>
       <div class="collections">
+        <h2>Collections</h2>
         <button class="collections__btn-add">New Collection</button>
         <form class="collections__form">
           <input class="collections__form__input" type="text" required>
           <button type="submit">Add</button>
         </form>
       </div>
-    </section>
+    </aside>
     <main id="content"></main>
     <form class="todo__new-form">
       <div class="field">
@@ -64,4 +66,5 @@
   </div>
   <footer></footer>
 </body>
+
 </html>
