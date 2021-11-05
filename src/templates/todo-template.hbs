@@ -13,22 +13,22 @@
   <form class="todo__form">
     <div class="todo__form__field">
       <label for="{{id}}-input-title">Title</label>
-      <input type="text" id="{{id}}-input-title" class="todo__input-title" value="{{title}}" required>
+      <input type="text" id="{{id}}-input-title" class="todo__input-title" name="title" value="{{title}}" required>
     </div>
 
     <div class="todo__form__field">
       <label for="{{id}}-input-description">Description</label>
-      <textarea id="{{id}}-input-title" class="todo__input-description">{{description}}</textarea>
+      <textarea id="{{id}}-input-title" name="description" class="todo__input-description">{{description}}</textarea>
     </div>
 
     <div class="todo__form__field">
       <label for="{{id}}-input-date">Date</label>
-      <input class="todo__input-date" id="{{id}}-input-date" type="date" value="{{formatDate dueDate}}">
+      <input class="todo__input-date" id="{{id}}-input-date" name="dueDate" type="date" value="{{formatDate dueDate}}">
     </div>
 
     <div class="todo__form__field">
       <label for="{{id}}-input-priority">Priority</label>
-      <select class="todo__input-priority" id="{{id}}-input-priority">
+      <select class="todo__input-priority" id="{{id}}-input-priority" name="priority">
         <option {{#if_eq priority "low"}}selected{{/if_eq}} value="low">Low</option>
         <option {{#if_eq priority "medium"}}selected{{/if_eq}} value="medium">Medium</option>
         <option {{#if_eq priority "high"}}selected{{/if_eq}} value="high">High</option>

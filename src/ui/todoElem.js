@@ -59,15 +59,15 @@ const TodoElem = (todo) => {
   };
 
   const updateTodo = event => {
-    let key = event.target.getAttribute('data-key');
+    let key = event.target.name;
     let value = event.target.value;
-    debugger
+
     if (key === 'title' && value === '') {
       event.target.value = todo.title;
       return;
     }
 
-    PubSub.publish(eventTypes.UPDATE_TODO, {id: todo.id, info: {key: value}});
+    PubSub.publish(eventTypes.UPDATE_TODO, {id: todo.id, info: {[key]: value}});
   };
 
   const updateUI = (msg, {id, changed}) => {
