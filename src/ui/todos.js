@@ -8,44 +8,6 @@ import TodoCollections from '../todoCollections.js';
 import TodoElem from './todoElem.js';
 
 const todos = (() => {
-  const addEventListeners = () => {
-    dom.newTodoBtn.addEventListener('click', toggleForm);
-    dom.form.addEventListener('submit', newTodo)
-  };
-
-  const toggleForm = event => {
-    populateSelect(dom.collectionSelect, collections)
-    dom.form.classList.toggle('modal__form--hidden');
-  };
-
-  // clears select element and populate with option element 
-  // built using values in collections
-  const populateSelect = (select, collections) => {
-    helpers.clearElement(select);
-
-    Object.values(collections).forEach( ({id, name}) => {
-      let option = new Option(name, id);
-      select.appendChild(option);
-    });
-
-    return select;
-  }
-
-  const newTodo = event => {
-    event.preventDefault();
-
-    const title = dom.titleInput.value;
-    const description = dom.descriptionInput.value;
-    const priority = dom.priorityInput.value;
-    const dueDate = dom.dateInput.value;
-    const id = +dom.collectionSelect.value
-
-    PubSub.publish(eventTypes.NEW_TODO, 
-      {id, info: {title, description, priority, dueDate}});
-
-    dom.form.reset();
-  };
-
   const showTodos = (msg, data) => {
     let collection;
 
@@ -144,15 +106,7 @@ const todos = (() => {
 
   const dom = {
     content: document.getElementById('content'),
-    newTodoBtn: document.querySelector('.modal__btn-open'),
-    form: document.querySelector('.modal__form'),
-    titleInput: document.querySelector('.modal__form__input-title'),
-    descriptionInput: document.querySelector('.modal__form__input-description'),
-    dateInput: document.querySelector('.modal__form__input-date'),
-    priorityInput: document.querySelector('.modal__form__input-priority'),
-    collectionSelect: document.querySelector('.modal__form__input-collection'),
   };
-  addEventListeners();
 
   PubSub.subscribe(eventTypes.SHOW_TODOS, showTodos);
   PubSub.subscribe(eventTypes.TODO_CREATED, showTodos);
