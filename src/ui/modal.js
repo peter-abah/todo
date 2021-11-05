@@ -13,7 +13,7 @@ const modal = (() => {
   };
 
   const closeModal = event => {
-    if (event.target !== event.currentTarget) return;
+    if (event && (event.target !== event.currentTarget)) return;
     toggleModal();
     dom.form.reset();
   }

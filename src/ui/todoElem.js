@@ -15,15 +15,15 @@ const TodoElem = (todo) => {
   const cacheDom = () => {
     const res = {}
 
-    res.checkBox = self.querySelector('.todo__checkBox');
+    res.checkBox = self.querySelector('.todo__btn-check');
     res.title = self.querySelector('.todo__title');
     res.deleteBtn = self.querySelector('.todo__btn-delete');
     res.date = self.querySelector('.todo__date');
 
-    res.titleInput = self.querySelector('.todo__input-title');
-    res.descriptionInput = self.querySelector('.todo__input-description');
-    res.dateInput = self.querySelector('.todo__input-date');
-    res.priorityInput = self.querySelector('.todo__input-priority');
+    res.titleInput = self.querySelector('.todo__form__input-text');
+    res.descriptionInput = self.querySelector('.todo__form__input-textarea');
+    res.dateInput = self.querySelector('.todo__form__input-date');
+    res.priorityInput = self.querySelector('.todo__form__select');
 
     res.formInputs = [res.titleInput, res.descriptionInput, res.dateInput, res.priorityInput];
     res.form = self.querySelector('.todo__form');

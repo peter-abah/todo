@@ -21,20 +21,15 @@ body {
 
 button {
   display: block;
-  width: 100%;
+  text-align: left;
+}
+
+button, input, select, textarea {
   padding: 0;
   border: none;
   background-color: inherit;
   color: inherit;
   font-family: inherit;
   font-size: inherit;
-  text-align: left;
-}
-
-input {
-  border: none;
-  background-color: inherit;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
+  letter-spacing: inherit;
 }

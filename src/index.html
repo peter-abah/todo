@@ -30,17 +30,17 @@
       <div class="categories">
         <h2 class="sidebar__title">Categories</h2>
 
-        <button class="category">All</button>
-        <button class="category">Today</button>
-        <button class="category">Tomorrow</button>
-        <button class="category">Next 7 Days</button>
+        <button class="category sidebar__btn">All</button>
+        <button class="category sidebar__btn">Today</button>
+        <button class="category sidebar__btn">Tomorrow</button>
+        <button class="category sidebar__btn">Next 7 Days</button>
       </div>
 
       <div class="collections">
         <h2 class="sidebar__title">Collections</h2>
         <div class="collections__wrapper"></div>
         
-        <button class="collections__btn collections__btn-add">New Collection</button>
+        <button id="add-collection-btn" class="sidebar__btn">New Collection</button>
         <form class="collections__form collections__form--hidden">
           <input class="collections__form__input" type="text" required>
           <button type="submit" class="collections__form__submit">
@@ -55,36 +55,40 @@
 
   <div class="modal">
     <form class="modal__form">
-      <div class="modal__form__field">
-        <label for="modal__form__input-collection" class="modal__form__label">Collection</label>
-        <select class="modal__form__select" id="modal__form__input-collection"></select>
-      </div>
-      
+      <h2 class="modal__form__title">Create Todo</h2>
+
       <div class="modal__form__field">
         <label for="modal__form__input-title" class="modal__form__label">Title</label>
-        <input type="text" id="modal__form__input-title" class="modal__form__input" required>
+        <input type="text" id="modal__form__input-title" class="modal__form__input modal__form__input-text" required>
       </div>
 
       <div class="modal__form__field">
         <label for="modal__form__input-description" class="modal__form__label">Description</label>
-        <textarea id="modal__form__input-description" class="modal__form__textarea"></textarea>
+        <textarea id="modal__form__input-description" class="modal__form__textarea modal__form__input"></textarea>
       </div>
 
-      <div class="modal__form__field">
-        <label for="modal__form__input-date" class="modal__form__label">Due Date</label>
-        <input type="date" id="modal__form__input-date" class="modal__form__input-date">
+      <div class="modal__form__field-wrapper">
+        <div class="modal__form__field">
+          <label for="modal__form__input-date" class="modal__form__label">Due Date</label>
+          <input type="date" id="modal__form__input-date" class="modal__form__input-date modal__form__input">
+        </div>
+
+        <div class="modal__form__field">
+          <label for="modal__form__input-priority" class="modal__form__label">Priority</label>
+          <select id="modal__form__input-priority" class="modal__form__select modal__form__input">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
+        <div class="modal__form__field">
+          <label for="modal__form__input-collection" class="modal__form__label">Collection</label>
+          <select class="modal__form__select modal__form__input" id="modal__form__input-collection"></select>
+        </div>
       </div>
 
-      <div class="modal__form__field">
-        <label for="modal__form__input-priority" class="modal__form__label">Priority</label>
-        <select id="modal__form__input-priority" class="modal__form__select">
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-      </div>
-
-      <button type="submit" class="modal__form__btn">Submit</button>
+      <button type="submit" class="modal__form__submit">Submit</button>
     </form>
   </div>
 </body>

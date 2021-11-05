@@ -13,21 +13,18 @@
   &__title {
     padding: .3rem 1.5rem;
   }
+
+  &__btn {
+    padding: .3rem 2rem;
+    width: 100%;
+  }
 }
 
 .categories {
   margin-bottom: 1.5rem;
 }
 
-.category {
-  padding: .3rem 2rem;
-}
-
 .collections {
-  &__btn {
-    padding: .3rem 2rem;
-  }
-
   &__form {
     position: relative;
     padding: 0 .5rem;

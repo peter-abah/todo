@@ -3,7 +3,7 @@ import eventTypes from '../eventTypes.js';
 
 const collection = (() => {
   const addEventListeners = () => {
-    dom.addBtn.addEventListener('click', showCollectionForm);
+    dom.addBtn.addEventListener('click', toggleForm);
 
     dom.form.addEventListener('submit', createCollection);
   };
@@ -13,20 +13,21 @@ const collection = (() => {
     PubSub.publish(eventTypes.SHOW_TODOS, {collectionId});
   };
 
-  const showCollectionForm = event => {
+  const toggleForm = event => {
     dom.form.classList.toggle('collections__form--hidden');
   };
 
   const createCollection = event => {
     event.preventDefault();
     const collectionName = dom.input.value;
-
+    
+    toggleForm();
     PubSub.publish(eventTypes.NEW_COLLECTION, {name: collectionName});
   };
 
   const addCollection = (msg, {collection}) => {
     const btn = document.createElement('button');
-    btn.classList.add('collections__btn');
+    btn.className = 'sidebar__btn';
 
     btn.textContent = collection.name;
     btn.setAttribute('data-collection', collection.id);
@@ -38,7 +39,7 @@ const collection = (() => {
   const dom = {
     mainWrapper: document.querySelector('.collections'),
     collectionsWrapper: document.querySelector('.collections__wrapper'),
-    addBtn: document.querySelector('.collections__btn-add'),
+    addBtn: document.getElementById('add-collection-btn'),
     form: document.querySelector('.collections__form'),
     input: document.querySelector('.collections__form__input'),
   };
