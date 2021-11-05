@@ -13,8 +13,8 @@ const todos = (() => {
 
     if (data.category) {
       collection = categories[data.category]();
-    } else if (Number.isInteger(data.collection)) {
-      collection = collections[data.collection];
+    } else if (Number.isInteger(data.collectionId)) {
+      collection = collections[data.collectionId];
     } else return;
 
     const todosElem = createTodos(collection);

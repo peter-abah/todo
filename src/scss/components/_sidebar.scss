@@ -5,6 +5,52 @@
   bottom: 0;
   overflow: auto;
   
-  width: 20rem;
-  padding: 1rem;
+  width: 15rem;
+  padding: 1rem 0;
+  background-color: var(--primary-color-2);
+  font-size: 1.125rem;
+
+  &__title {
+    padding: .3rem 1.5rem;
+  }
+}
+
+.categories {
+  margin-bottom: 1.5rem;
+}
+
+.category {
+  padding: .3rem 2rem;
+}
+
+.collections {
+  &__btn {
+    padding: .3rem 2rem;
+  }
+
+  &__form {
+    position: relative;
+    padding: 0 .5rem;
+    display: flex;
+    align-items: center;
+
+    &--hidden {
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    &__input {
+      width: calc(100% - 2rem);
+      padding: .3rem;
+      margin-right: 2px;
+      border-bottom: 2px solid var(--text-primary);
+      background-color: inherit;
+    }
+
+    &__submit {
+      display: flex;
+      align-items: center;
+    }
+  }
 }

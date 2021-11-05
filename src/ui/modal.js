@@ -4,15 +4,19 @@ import eventTypes from '../eventTypes.js'
 const modal = (() => {
   const addEventListeners = () => {
     dom.openModalBtn.addEventListener('click', toggleModal);
-    dom.modal.addEventListener('click', toggleModal);
+    dom.modal.addEventListener('click', closeModal);
     dom.form.addEventListener('submit', newTodo);
   };
 
   const toggleModal = event => {
-    if (event.target !== event.currentTarget) return;
-
     dom.modal.classList.toggle('modal--hidden');
   };
+
+  const closeModal = event => {
+    if (event.target !== event.currentTarget) return;
+    toggleModal();
+    dom.form.reset();
+  }
 
   const addCollectionOption = (_, {id, collection}) => {
     const option = new Option(collection.name, id);
@@ -38,19 +42,19 @@ const modal = (() => {
     PubSub.publish(eventTypes.NEW_TODO, 
       {id, info: {title, description, priority, dueDate}});
 
-    toggleModal();
+    closeModal();
   };
 
   const dom = {
     modal: document.querySelector('.modal'),
-    openModalBtn: document.querySelector('.modal__btn-open'),
+    openModalBtn: document.querySelector('.open-modal-btn'),
 
     form: document.querySelector('.modal__form'),
-    titleInput: document.querySelector('.modal__form__input-title'),
-    descriptionInput: document.querySelector('.modal__form__input-description'),
-    dateInput: document.querySelector('.modal__form__input-date'),
-    priorityInput: document.querySelector('.modal__form__input-priority'),
-    collectionSelect: document.querySelector('.modal__form__input-collection'),
+    titleInput: document.getElementById('modal__form__input-title'),
+    descriptionInput: document.getElementById('modal__form__input-description'),
+    dateInput: document.getElementById('modal__form__input-date'),
+    priorityInput: document.getElementById('modal__form__input-priority'),
+    collectionSelect: document.getElementById('modal__form__input-collection'),
   };
 
   addEventListeners();

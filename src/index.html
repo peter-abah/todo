@@ -3,63 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+
   <title>Todo</title>
 </head>
 
 <body>
   <header class="header">
-    <h1 class="brand">Todo</h1>
-    <div class="buttons">
-      <button class="modal__btn-open">Add Todo</button>
-      <button>Toggle Theme</button>
+    <h1 class="header__title">Todo</h1>
+    <div class="header__btns">
+      <button class="header__btn open-modal-btn">
+        <span class="header__icon material-icons-outlined">add</span>
+      </button>
+      <button class="header__btn theme-btn">
+        <span class="header__icon material-icons-outlined">light_mode</span>
+        <span class="header__icon theme-btn__icon--hidden material-icons-outlined">dark_mode</span>
+      </button>
     </div>
   </header>
+
   <div class="main-wrapper">
     <aside class="sidebar">
       <div class="categories">
-        <button class="categories__btn">All</button>
-        <button class="categories__btn">Today</button>
-        <button class="categories__btn">Tomorrow</button>
-        <button class="categories__btn">Next 7 Days</button>
+        <h2 class="sidebar__title">Categories</h2>
+
+        <button class="category">All</button>
+        <button class="category">Today</button>
+        <button class="category">Tomorrow</button>
+        <button class="category">Next 7 Days</button>
       </div>
+
       <div class="collections">
-        <h2>Collections</h2>
-        <button class="collections__btn-add">New Collection</button>
-        <form class="collections__form">
+        <h2 class="sidebar__title">Collections</h2>
+        <div class="collections__wrapper"></div>
+        
+        <button class="collections__btn collections__btn-add">New Collection</button>
+        <form class="collections__form collections__form--hidden">
           <input class="collections__form__input" type="text" required>
-          <button type="submit">Add</button>
+          <button type="submit" class="collections__form__submit">
+            <span class="material-icons-outlined">check</span>
+          </button>
         </form>
       </div>
     </aside>
-    <main id="content"></main>
+    <main id="content" class="content"></main>
   </div>
   <footer></footer>
 
-  <div class="modal modal--hidden">
+  <div class="modal">
     <form class="modal__form">
       <div class="modal__form__field">
-        <label for="">Collection</label>
-        <select id="" class="modal__form__input-collection"></select>
+        <label for="modal__form__input-collection" class="modal__form__label">Collection</label>
+        <select class="modal__form__select" id="modal__form__input-collection"></select>
       </div>
       
       <div class="modal__form__field">
-        <label for="">Title</label>
-        <input type="text" class="modal__form__input-title" required>
+        <label for="modal__form__input-title" class="modal__form__label">Title</label>
+        <input type="text" id="modal__form__input-title" class="modal__form__input" required>
       </div>
 
       <div class="modal__form__field">
-        <label for="">Description</label>
-        <textarea class="modal__form__input-description"></textarea>
+        <label for="modal__form__input-description" class="modal__form__label">Description</label>
+        <textarea id="modal__form__input-description" class="modal__form__textarea"></textarea>
       </div>
 
       <div class="modal__form__field">
-        <label for="">Due Date</label>
-        <input type="date" name="" class="modal__form__input-date">
+        <label for="modal__form__input-date" class="modal__form__label">Due Date</label>
+        <input type="date" id="modal__form__input-date" class="modal__form__input-date">
       </div>
 
       <div class="modal__form__field">
-        <label for="">Priority</label>
-        <select class="modal__form__input-priority">
+        <label for="modal__form__input-priority" class="modal__form__label">Priority</label>
+        <select id="modal__form__input-priority" class="modal__form__select">
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>

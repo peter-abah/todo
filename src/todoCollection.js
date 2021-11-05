@@ -12,7 +12,7 @@ const TodoCollection = (name, id) => {
     const todo = Todo(title, description, priority, dueDate, todoId);
 
     todos[todoId] = todo;
-    PubSub.publish(eventTypes.TODO_CREATED, {todo, id: todoId, collection: id});
+    PubSub.publish(eventTypes.TODO_CREATED, {todo, id: todoId, collectionId: id});
   };
 
   const deleteTodo = (msg, {id}) => {

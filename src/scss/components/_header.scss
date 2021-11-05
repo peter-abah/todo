@@ -1,5 +1,50 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+  background-color: var(--primary-color-2);
+
+  &__title {
+    font-size: 1.5rem;
+  }
+
+  &__btns {
+    display: flex;
+    font-weight: 700;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1rem;
+  }
+
+  &__icon {
+    font-size: 1.75rem;
+  }
+}
+
+// .open-modal-btn {
+//   border-radius: .5rem;
+//   background-color: var(--secondary-color);
+// }
+
+.theme-btn {
+  position: relative;
+
+  &__icon {
+    &--hidden {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      opacity: 0;
+    }
+  }
 }

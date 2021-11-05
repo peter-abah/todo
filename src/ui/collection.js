@@ -3,47 +3,45 @@ import eventTypes from '../eventTypes.js';
 
 const collection = (() => {
   const addEventListeners = () => {
-    collectionBtns.forEach(btn => 
-      btn.addEventListener('click', showCollection)
-    );
+    dom.addBtn.addEventListener('click', showCollectionForm);
 
-    addCollectionBtn.addEventListener('click', showCollectionForm);
-
-    collectionForm.addEventListener('submit', createCollection);
+    dom.form.addEventListener('submit', createCollection);
   };
 
   const showCollection = event => {
-    const collectionId = event.target.getAttribute('data-collection');
+    const collectionId = +event.target.getAttribute('data-collection');
     PubSub.publish(eventTypes.SHOW_TODOS, {collectionId});
   };
 
   const showCollectionForm = event => {
-    collectionForm.classList.toggle('collection__form--hidden');
+    dom.form.classList.toggle('collections__form--hidden');
   };
 
   const createCollection = event => {
     event.preventDefault();
-    const collectionName = collectionInput.value;
+    const collectionName = dom.input.value;
 
     PubSub.publish(eventTypes.NEW_COLLECTION, {name: collectionName});
   };
 
   const addCollection = (msg, {collection}) => {
     const btn = document.createElement('button');
-    btn.classList.add('collection__btn');
+    btn.classList.add('collections__btn');
 
     btn.textContent = collection.name;
     btn.setAttribute('data-collection', collection.id);
 
     btn.addEventListener('click', showCollection);
-    collectionBtnsContainer.appendChild(btn);
+    dom.collectionsWrapper.appendChild(btn);
   };
 
-  const collectionBtnsContainer = document.querySelector('.collections');
-  const collectionBtns = [...document.querySelectorAll('.collection__btn')];
-  const addCollectionBtn = document.querySelector('.collections__btn-add');
-  const collectionForm = document.querySelector('.collections__form');
-  const collectionInput = document.querySelector('.collections__form__input');
+  const dom = {
+    mainWrapper: document.querySelector('.collections'),
+    collectionsWrapper: document.querySelector('.collections__wrapper'),
+    addBtn: document.querySelector('.collections__btn-add'),
+    form: document.querySelector('.collections__form'),
+    input: document.querySelector('.collections__form__input'),
+  };
 
   PubSub.subscribe(eventTypes.COLLECTION_CREATED, addCollection);
 

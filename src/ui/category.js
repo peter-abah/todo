@@ -14,7 +14,7 @@ const category = (() => {
     PubSub.publish(eventTypes.SHOW_TODOS, {category});
   };
 
-  const categoryBtns = [...document.querySelectorAll('.categories__btn')];
+  const categoryBtns = [...document.querySelectorAll('.category')];
   addEventListeners();
 })();
 
