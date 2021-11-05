@@ -13,9 +13,8 @@ const Todo = (title, description, priority, dueDate, id) => {
 
       self[k] = data.info[k];
     }
-
     PubSub.publish(eventTypes.TODO_UPDATED, 
-      {id: self.id, changed: [Object.keys(data.info)]}
+      {id: self.id, changed: Object.keys(data.info)}
     );
   };
 
