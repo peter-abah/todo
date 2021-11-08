@@ -1,6 +1,6 @@
 <div class="todo">
   <div class="todo__header">
-    <button class="todo__btn-check todo__btn-check--{{priority}}">
+    <button class="todo__btn-check todo__btn-check--{{priority}}" title="Complete Todo">
       <span class="todo__btn-check__icon material-icons-outlined">check_box_outline_blank</span>
       <span class="todo__btn-check__icon todo__btn-check__icon--hidden material-icons-outlined">check_box</span>
     </button>
@@ -8,7 +8,7 @@
       <h4 class="todo__title">{{title}}</h4>
       <p class="todo__date">{{formatDate dueDate}}</p>
     </div>
-    <button class="todo__btn-delete" data-todo-id="{{id}}">
+    <button class="todo__btn-delete" data-todo-id="{{id}}" title="Delete Todo">
       <span class="material-icons-outlined">delete</span>
     </button>
   </div>

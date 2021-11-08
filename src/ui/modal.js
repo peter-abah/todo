@@ -15,7 +15,6 @@ const modal = (() => {
   const closeModal = event => {
     if (event && (event.target !== event.currentTarget)) return;
     toggleModal();
-    dom.form.reset();
   }
 
   const addCollectionOption = (_, {id, collection}) => {
@@ -41,7 +40,8 @@ const modal = (() => {
 
     PubSub.publish(eventTypes.NEW_TODO, 
       {id, info: {title, description, priority, dueDate}});
-
+    
+    dom.form.reset();
     closeModal();
   };
 

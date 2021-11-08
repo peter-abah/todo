@@ -2,3 +2,9 @@
   margin-left: 15rem;
   padding: 1rem;
 }
+
+@media screen and (max-width: 40rem) {
+  .content {
+    margin-left: 0;
+  }
+}

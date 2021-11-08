@@ -14,7 +14,12 @@ const category = (() => {
     PubSub.publish(eventTypes.SHOW_TODOS, {category});
   };
 
+  const toggleSidebr = event => {
+    
+  }
+
   const categoryBtns = [...document.querySelectorAll('.category')];
+  const sidebar = document.querySelector('.sidebar')
   addEventListeners();
 })();
 

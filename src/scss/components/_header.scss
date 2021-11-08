@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background-color: var(--primary-color-2);
 
   &__title {
@@ -18,9 +18,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2rem;
     height: 2rem;
     margin-left: 1rem;
+    font-size: 1.125rem;
+    gap: .5rem;
   }
 
   &__icon {
@@ -28,23 +29,14 @@
   }
 }
 
-// .open-modal-btn {
-//   border-radius: .5rem;
-//   background-color: var(--secondary-color);
-// }
+.menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
 
-.theme-btn {
-  position: relative;
-
-  &__icon {
-    &--hidden {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      opacity: 0;
-    }
+@media screen and (max-width: 40rem) {
+  .menu-btn {
+    display: flex;
   }
 }
