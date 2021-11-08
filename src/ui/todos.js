@@ -21,23 +21,34 @@ const todos = (() => {
   };
 
   const createTodos = collection => {
-    let todoElems = getTodoElems(collection, todo => !todo.completed);
+    let todoElems = getTodoElems(collection, 'Upcoming', todo => !todo.completed);
 
-    let completedTodoElems = getTodoElems(collection, todo => todo.completed);
+    let completedTodoElems = getTodoElems(collection, 'Completed', todo => todo.completed);
 
-    //let header = headerTemplate(collection);
+    let header = document.createElement('h2');
+    header.textContent = collection.name;
+    header.className = 'todo-section__header';
 
     let wrapper = document.createElement('section');
-    //wrapper.appendChild(header);
-    debugger
-    wrapper.appendChild(completedTodoElems);
+    wrapper.className = 'todo-section';
+    
+    wrapper.appendChild(header);
     wrapper.appendChild(todoElems);
+    wrapper.appendChild(completedTodoElems);
+
     return wrapper;
   };
 
-  const getTodoElems = (collection, predicate) => {
+  const getTodoElems = (collection, title, predicate) => {
     if(!predicate) predicate = () => true;
     let wrapper = document.createElement('div');
+
+    if (title) {
+      const elem = document.createElement('h3');
+      elem.textContent = title;
+      elem.className = 'todo-category__title';
+      wrapper.appendChild(elem)
+    }
 
     Object.values(collection.todos).forEach(todo =>  {
       if (predicate(todo)) {
@@ -47,6 +58,7 @@ const todos = (() => {
       }
     });
 
+    wrapper.className = 'todo-category';
     return wrapper;
   };
 

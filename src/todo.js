@@ -9,7 +9,7 @@ const Todo = (title, description, priority, dueDate, id) => {
     for (let k of Object.keys(data.info)) {
       if (k === 'id' || !self.hasOwnProperty(k)) continue;
       if (k === 'date') 
-        data.info[k] = helpers.convertDate(data.info[k]);
+        data.info[k] = helpers.formatDate(data.info[k]);
 
       self[k] = data.info[k];
     }
@@ -23,7 +23,7 @@ const Todo = (title, description, priority, dueDate, id) => {
 
   
 
-  dueDate = helpers.convertDate(dueDate);
+  dueDate = helpers.formatDate(dueDate);
   const self = { 
     title, 
     description, 

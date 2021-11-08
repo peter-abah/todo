@@ -1,5 +1,6 @@
 import PubSub from 'pubsub-js';
 import eventTypes from '../eventTypes.js';
+import helpers from '../helpers.js';
 
 import todoTemplate from '../templates/todo-template.hbs';
 
@@ -14,6 +15,8 @@ const TodoElem = (todo) => {
 
   const cacheDom = () => {
     const res = {}
+
+    res.body = self.querySelector('.todo__body');
 
     res.checkBox = self.querySelector('.todo__btn-check');
     res.checkIcons = [...self.querySelectorAll('.todo__btn-check__icon')];
@@ -34,7 +37,7 @@ const TodoElem = (todo) => {
 
   const addEventListeners = () => {
     dom.checkBox.addEventListener('click', completeTodo);
-    dom.title.addEventListener('click', toggleForm);
+    dom.body.addEventListener('click', toggleForm);
     dom.deleteBtn.addEventListener('click', deleteTodo);
     dom.formInputs.forEach(input => 
       input.addEventListener('change', updateTodo)
@@ -42,7 +45,7 @@ const TodoElem = (todo) => {
   };
 
   const completeTodo = event => {
-    let status = event.target.getAttribute('data-completed');
+    let status = event.currentTarget.getAttribute('data-completed');
     status = status !== 'true';
 
     PubSub.publish(eventTypes.UPDATE_TODO, 
@@ -85,8 +88,9 @@ const TodoElem = (todo) => {
           dom.priorityInput.value = todo[key];
           break;
         case 'dueDate':
+          debugger
           dom.dateInput.value = todo[key]; // might have a bug
-          dom.date = helpers.formatDate(todo[key]);
+          dom.date.textContent = todo[key];
           break;
         case 'completed':
           dom.checkBox.setAttribute('data-completed', todo.completed);

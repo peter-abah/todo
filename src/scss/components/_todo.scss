@@ -1,5 +1,26 @@
-.todo {
+.todo-section {
   max-width: 31.25rem;
+  margin: 0 auto;
+
+  &__header {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.todo-category {
+  margin-bottom: 4rem;
+
+  &__title {
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+    font-size: .875rem;
+    border-bottom: 2px solid var(--text-primary);
+  }
+}
+
+.todo {
   margin: 1rem auto;
 
   &__header {
@@ -17,12 +38,16 @@
   }
 
   &__body {
+    margin: 0 .75rem;
     flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   &__btn-check {
     position: relative;
-    margin-right: .75rem;
 
     &__icon--hidden {
       position: absolute;

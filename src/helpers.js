@@ -19,8 +19,8 @@ const filterObject = (obj, predicate) => {
 
 // converts a date string in yyyy-MM-dd format to a date object
 // returns undefined if date is undefined
-const convertDate = (dateStr) => {
+const formatDate = (dateStr) => {
   return dateStr ? parse(dateStr, 'yyyy-MM-dd', new Date()) : dateStr;
 }
 
-export default {clearElement, filterObject, convertDate};
+export default {clearElement, filterObject, formatDate};

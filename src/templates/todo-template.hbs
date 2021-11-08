@@ -6,7 +6,7 @@
     </button>
     <div class="todo__body">
       <h4 class="todo__title">{{title}}</h4>
-      <p class="todo__date">{{formatDate date}}</p>
+      <p class="todo__date">{{formatDate dueDate}}</p>
     </div>
     <button class="todo__btn-delete" data-todo-id="{{id}}">
       <span class="material-icons-outlined">delete</span>
@@ -24,7 +24,7 @@
       <textarea id="{{id}}-input-description" name="description" class="todo__form__input todo__form__textarea">{{description}}</textarea>
     </div>
 
-    <div class="form__field-wrapper">
+    <div class="todo__form__field-wrapper">
       <div class="todo__form__field">
         <label for="{{id}}-input-date" class="todo__form__label">Date</label>
         <input class="todo__form__input todo__form__input-date" id="{{id}}-input-date" name="dueDate" type="date" value="{{formatDate dueDate}}">
