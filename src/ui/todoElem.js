@@ -85,6 +85,7 @@ const TodoElem = (todo) => {
           dom.descriptionInput.value = todo[key];
           break;
         case 'priority':
+          dom.checkBox.className = `todo__btn-check todo__btn-check--${todo.priority}`
           dom.priorityInput.value = todo[key];
           break;
         case 'dueDate':

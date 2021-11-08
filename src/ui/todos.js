@@ -63,7 +63,7 @@ const todos = (() => {
   };
 
   const allTodos = () => {
-    let collection = collections.reduce((acc, val) => {
+    let collection = Object.values(collections).reduce((acc, val) => {
       acc.collection = Object.assign(acc.todos, val.todos);
       return acc;
     }, {name: 'All', todos: {}});
@@ -72,22 +72,22 @@ const todos = (() => {
   };
 
   const todayTodos = () => {
-    let todos = helpers.objectFilter(allTodos().todos, value => 
+    let todos = helpers.filterObject(allTodos().todos, value => 
       isToday(value.dueDate));
 
     return {name: 'Today', todos};
   };
 
   const tommorowTodos = () => {
-    let todos = helpers.objectFilter(allTodos().todos, value => 
+    let todos = helpers.filterObject(allTodos().todos, value => 
       isTomorrow(value.dueDate));
 
-    return {name: 'Tommorow', todos}
+    return {name: 'Tomorrow', todos}
   };
 
   const next7Days = () => {
     const date = addWeeks(new Date(), 1)
-    let todos = helpers.objectFilter(allTodos().todos, value => 
+    let todos = helpers.filterObject(allTodos().todos, value => 
       isBefore(value.dueDate, date));
 
     return {name: 'Next 7 Days', todos};
@@ -114,7 +114,7 @@ const todos = (() => {
   const categories = {
     all: allTodos,
     today: todayTodos,
-    tommorow: tommorowTodos,
+    tomorrow: tommorowTodos,
     next7Days: next7Days,
   }
 

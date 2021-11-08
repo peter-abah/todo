@@ -49,6 +49,18 @@
   &__btn-check {
     position: relative;
 
+    &--high {
+      color: var(--priority-high);
+    }
+
+    &--medium {
+      color: var(--priority-medium);
+    }
+
+    &--low {
+      color: var(--priority-low);
+    }
+
     &__icon--hidden {
       position: absolute;
       top: 0;
