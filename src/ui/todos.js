@@ -9,15 +9,13 @@ import TodoElem from './todoElem.js';
 
 const todos = (() => {
   const showTodos = (msg, data) => {
-    let collection;
-
-    if (data.category) {
-      collection = categories[data.category]();
-    } else if (Number.isInteger(data.collectionId)) {
-      collection = collections[data.collectionId];
+    if (Number.isInteger(data.collectionId)) {
+      currentCollection = collections[data.collectionId];
+    } else if (data.category) {
+      currentCollection = categories[data.category]();
     } else return;
 
-    const todosElem = createTodos(collection);
+    const todosElem = createTodos(currentCollection);
     helpers.clearElement(dom.content);
     dom.content.appendChild(todosElem);
   };
@@ -30,8 +28,8 @@ const todos = (() => {
     //let header = headerTemplate(collection);
 
     let wrapper = document.createElement('section');
-
     //wrapper.appendChild(header);
+    debugger
     wrapper.appendChild(completedTodoElems);
     wrapper.appendChild(todoElems);
     return wrapper;
@@ -86,16 +84,20 @@ const todos = (() => {
   const updateTodo = (msg, {id , changed}) => {
     if (!changed.includes('completed')) return;
 
-    const todoElem = dom[id];
-    todoElem.classList.toggle('todo--completed');
+    PubSub.publish(eventTypes.SHOW_TODOS,
+      // trys to send id or name since currentCollection can be a todcollection (has id)
+      // time category (has name)
+      {collectionId: currentCollection.id, category: currentCollection.name}
+    );
   };
 
   const deleteTodo = (msg, {id}) => {
     const todoElem = dom[id];
     todoElem.remove();
     delete dom[id];
-  }
+  };
 
+  let currentCollection;
   const collections = TodoCollections;
   const categories = {
     all: allTodos,

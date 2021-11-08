@@ -16,12 +16,13 @@ const TodoElem = (todo) => {
     const res = {}
 
     res.checkBox = self.querySelector('.todo__btn-check');
+    res.checkIcons = [...self.querySelectorAll('.todo__btn-check__icon')];
     res.title = self.querySelector('.todo__title');
     res.deleteBtn = self.querySelector('.todo__btn-delete');
     res.date = self.querySelector('.todo__date');
 
     res.titleInput = self.querySelector('.todo__form__input-text');
-    res.descriptionInput = self.querySelector('.todo__form__input-textarea');
+    res.descriptionInput = self.querySelector('.todo__form__textarea');
     res.dateInput = self.querySelector('.todo__form__input-date');
     res.priorityInput = self.querySelector('.todo__form__select');
 
@@ -42,7 +43,7 @@ const TodoElem = (todo) => {
 
   const completeTodo = event => {
     let status = event.target.getAttribute('data-completed');
-    status = status === 'true' ? true : false;
+    status = status !== 'true';
 
     PubSub.publish(eventTypes.UPDATE_TODO, 
       {id: todo.id, info: {completed: status}});
@@ -53,9 +54,7 @@ const TodoElem = (todo) => {
   };
 
   const deleteTodo = event => {
-    let id = event.target.getAttribute('data-todo-id');
-
-    PubSub.publish(eventTypes.DELETE_TODO, {id});
+    PubSub.publish(eventTypes.DELETE_TODO, {id: todo.id});
   };
 
   const updateTodo = event => {
@@ -89,8 +88,17 @@ const TodoElem = (todo) => {
           dom.dateInput.value = todo[key]; // might have a bug
           dom.date = helpers.formatDate(todo[key]);
           break;
+        case 'completed':
+          dom.checkBox.setAttribute('data-completed', todo.completed);
+          dom.title.classList.toggle('todo__title--completed');
+          toggleCheckBtn();
+          break;
       }
     });
+  };
+
+  const toggleCheckBtn = () => {
+    dom.checkIcons.forEach(icon => icon.classList.toggle('todo__btn-check__icon--hidden'))
   };
 
   const self = newTodo(todo);

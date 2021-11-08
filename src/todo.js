@@ -21,8 +21,10 @@ const Todo = (title, description, priority, dueDate, id) => {
 
   PubSub.subscribe(eventTypes.UPDATE_TODO, update);
 
+  
+
   dueDate = helpers.convertDate(dueDate);
-  self = { 
+  const self = { 
     title, 
     description, 
     priority, 

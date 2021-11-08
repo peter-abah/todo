@@ -1,10 +1,10 @@
 <div class="todo">
-  <div class="todo__body">
+  <div class="todo__header">
     <button class="todo__btn-check">
-      <span class="material-icons-outlined">check_box_outline_blank</span>
-      <span class="material-icons-outlined">check_box</span>
+      <span class="todo__btn-check__icon material-icons-outlined">check_box_outline_blank</span>
+      <span class="todo__btn-check__icon todo__btn-check__icon--hidden material-icons-outlined">check_box</span>
     </button>
-    <div class="todo__header">
+    <div class="todo__body">
       <h4 class="todo__title">{{title}}</h4>
       <p class="todo__date">{{formatDate date}}</p>
     </div>
@@ -15,27 +15,29 @@
   
   <form class="todo__form todo__form--hidden">
     <div class="todo__form__field">
-      <label for="{{id}}-input-title">Title</label>
-      <input type="text" id="{{id}}-input-title" class="todo__form__input-text" name="title" value="{{title}}" required>
+      <label for="{{id}}-input-title" class="todo__form__label">Title</label>
+      <input type="text" id="{{id}}-input-title" class="todo__form__input todo__form__input-text" name="title" value="{{title}}" required>
     </div>
 
     <div class="todo__form__field">
-      <label for="{{id}}-input-description">Description</label>
-      <textarea id="{{id}}-input-description" name="description" class="todo__form__textarea">{{description}}</textarea>
+      <label for="{{id}}-input-description" class="todo__form__label">Description</label>
+      <textarea id="{{id}}-input-description" name="description" class="todo__form__input todo__form__textarea">{{description}}</textarea>
     </div>
 
-    <div class="todo__form__field">
-      <label for="{{id}}-input-date">Date</label>
-      <input class="todo__form__input-date" id="{{id}}-input-date" name="dueDate" type="date" value="{{formatDate dueDate}}">
-    </div>
+    <div class="form__field-wrapper">
+      <div class="todo__form__field">
+        <label for="{{id}}-input-date" class="todo__form__label">Date</label>
+        <input class="todo__form__input todo__form__input-date" id="{{id}}-input-date" name="dueDate" type="date" value="{{formatDate dueDate}}">
+      </div>
 
-    <div class="todo__form__field">
-      <label for="{{id}}-input-priority">Priority</label>
-      <select class="todo__form__select" id="{{id}}-input-priority" name="priority">
-        <option {{#if_eq priority "low"}}selected{{/if_eq}} value="low">Low</option>
-        <option {{#if_eq priority "medium"}}selected{{/if_eq}} value="medium">Medium</option>
-        <option {{#if_eq priority "high"}}selected{{/if_eq}} value="high">High</option>
-      </select>
+      <div class="todo__form__field">
+        <label for="{{id}}-input-priority" class="todo__form__label">Priority</label>
+        <select class="todo__form__input todo__form__select" id="{{id}}-input-priority" name="priority">
+          <option {{#if_eq priority "low"}}selected{{/if_eq}} value="low">Low</option>
+          <option {{#if_eq priority "medium"}}selected{{/if_eq}} value="medium">Medium</option>
+          <option {{#if_eq priority "high"}}selected{{/if_eq}} value="high">High</option>
+        </select>
+      </div>
     </div>
   </form>
 </div>
