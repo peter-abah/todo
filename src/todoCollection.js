@@ -2,17 +2,16 @@ import PubSub from 'pubsub-js';
 import eventTypes from './eventTypes.js';
 import Todo from './todo.js';
 
-const TodoCollection = (name, id) => {
+let uid = -1;
+const TodoCollection = (name) => {
   const newTodo = (msg, data) => {
     if (id !== data.id) return;
     const {title, description, priority, dueDate} = data.info;
 
-    uid++;
-    const todoId = `${id} ${uid}`
-    const todo = Todo(title, description, priority, dueDate, todoId);
+    const todo = Todo(title, description, priority, dueDate, id);
 
-    todos[todoId] = todo;
-    PubSub.publish(eventTypes.TODO_CREATED, {todo, id: todoId, collectionId: id});
+    todos[todo.id] = todo;
+    PubSub.publish(eventTypes.TODO_CREATED, {todo, id: todo.id, collectionId: id});
   };
 
   const deleteTodo = (msg, {id}) => {
@@ -28,7 +27,7 @@ const TodoCollection = (name, id) => {
   };
 
   const todos = {};
-  let uid = -1;
+  const id = ++uid; 
 
   PubSub.subscribe(eventTypes.NEW_TODO, newTodo);
   PubSub.subscribe(eventTypes.DELETE_TODO, deleteTodo);

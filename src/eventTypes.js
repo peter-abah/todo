@@ -16,6 +16,9 @@ const eventTypes = {
   COLLECTION_CREATED: 'collection_created',
   COLLECTION_UPDATED: 'collection_updated',
   COLLECTION_DELETED: 'collection_deleted',
+
+  STORAGE: 'storage',
+  GET_STORAGE: 'get_storage',
 };
 
 export default eventTypes;

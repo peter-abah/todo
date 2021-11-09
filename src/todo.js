@@ -2,14 +2,15 @@ import PubSub from 'pubsub-js';
 import eventTypes from './eventTypes.js';
 import helpers from './helpers.js'
 
-const Todo = (title, description, priority, dueDate, id) => {
+let uid = -1;
+const Todo = (title, description, priority, dueDate, collectionId, completed = false) => {
   const update = (msg, data) => {
     if (id !== data.id) return;
 
     for (let k of Object.keys(data.info)) {
       if (k === 'id' || !self.hasOwnProperty(k)) continue;
       if (k === 'date') 
-        data.info[k] = helpers.formatDate(data.info[k]);
+        data.info[k] = helpers.convertStrToDate(data.info[k]);
 
       self[k] = data.info[k];
     }
@@ -18,19 +19,19 @@ const Todo = (title, description, priority, dueDate, id) => {
     );
   };
 
-
   PubSub.subscribe(eventTypes.UPDATE_TODO, update);
 
-  
+  const id = ++uid;
+  dueDate = helpers.convertStrToDate(dueDate.substring(0, 10));
 
-  dueDate = helpers.formatDate(dueDate);
   const self = { 
     title, 
     description, 
     priority, 
     dueDate,
     id,
-    completed: false,
+    collectionId,
+    completed,
   };
 
   return self;

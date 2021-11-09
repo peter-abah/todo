@@ -99,7 +99,7 @@ const todos = (() => {
     PubSub.publish(eventTypes.SHOW_TODOS,
       // trys to send id or name since currentCollection can be a todcollection (has id)
       // time category (has name)
-      {collectionId: currentCollection.id, category: currentCollection.name}
+      {collectionId: currentCollection.id, category: currentCollection.name.toLowerCase()}
     );
   };
 
@@ -115,7 +115,7 @@ const todos = (() => {
     all: allTodos,
     today: todayTodos,
     tomorrow: tommorowTodos,
-    next7Days: next7Days,
+    'next 7 days': next7Days,
   }
 
   const dom = {

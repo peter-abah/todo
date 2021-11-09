@@ -21,7 +21,7 @@
 }
 
 .todo {
-  margin: 1rem auto;
+  margin: 1.5rem auto;
 
   &__header {
     display: flex;
@@ -45,7 +45,7 @@
     gap: 1rem;
     flex-wrap: wrap;
   }
-
+  
   &__btn-check {
     position: relative;
 

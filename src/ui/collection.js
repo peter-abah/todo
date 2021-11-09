@@ -10,11 +10,16 @@ const collection = (() => {
 
   const showCollection = event => {
     const collectionId = +event.target.getAttribute('data-collection');
+    toggleSidebar();
     PubSub.publish(eventTypes.SHOW_TODOS, {collectionId});
   };
 
   const toggleForm = event => {
     dom.form.classList.toggle('collections__form--hidden');
+  };
+
+  const toggleSidebar = evebnt => {
+    dom.sidebar.classList.toggle('sidebar--hidden')
   };
 
   const createCollection = event => {
@@ -37,6 +42,7 @@ const collection = (() => {
   };
 
   const dom = {
+    sidebar: document.querySelector('.sidebar'),
     mainWrapper: document.querySelector('.collections'),
     collectionsWrapper: document.querySelector('.collections__wrapper'),
     addBtn: document.getElementById('add-collection-btn'),
@@ -46,8 +52,6 @@ const collection = (() => {
 
   PubSub.subscribe(eventTypes.COLLECTION_CREATED, addCollection);
 
-  // generate event to create a default collection
-  PubSub.publish(eventTypes.NEW_COLLECTION, {name: 'Default'});
   addEventListeners();
 })();
 
