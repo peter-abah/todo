@@ -2,7 +2,7 @@
 
 This is a web app where users can create todos, group under collections, edit and delete them.
 
-[View Live Demo](https://peter-abah.github.io/tic-tac-toe)
+[View Live Demo](https://peter-abah.github.io/todo/)
 
 ## Table of contents
 
