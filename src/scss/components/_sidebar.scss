@@ -10,6 +10,8 @@
   font-size: 1.125rem;
   background-color: var(--primary-color-2);
 
+  transition: width 300ms ease-in;
+
   &__title {
     padding: .3rem 1.5rem;
   }
@@ -54,11 +56,11 @@
 
 @media screen and (max-width: 40rem) {
   .sidebar {
-    width: 100%;
     z-index: 10;
 
     &--hidden {
-      display: none;
+      width: 0;
+      overflow: hidden;
     }
   }
 }
